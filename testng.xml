@@ -5,14 +5,13 @@
         <listener class-name="com.reddit.automation.ui.utils.ExtentReportListener"></listener>
     </listeners>
 
-    <test name="">
-    	<parameter name = "" value=""/>
-    	<parameter name = "" value=""/>
+    <test name="Sample Test">
+        <parameter name="firstname" value="Shreyas"/>
         <classes>
-            <class name="">
+            <class name="com.reddit.automation.ui.pageTests.LoginTestCases">
             	<methods>
-        			<include name="" />
-      			</methods
+        			<include name="sampleTest" />
+      			</methods>
             </class>
         </classes>
     </test>
