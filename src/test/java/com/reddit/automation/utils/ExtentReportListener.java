@@ -1,4 +1,4 @@
-package com.reddit.automation.ui.utils;
+package com.reddit.automation.utils;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;

@@ -2,13 +2,13 @@
 <suite name="Reddit UI Test Suite" verbose ="5" parallel="methods" thread-count="10">
 
     <listeners>
-        <listener class-name="com.reddit.automation.ui.utils.ExtentReportListener"></listener>
+        <listener class-name="com.reddit.automation.utils.ExtentReportListener"></listener>
     </listeners>
 
     <test name="Sample Test">
         <parameter name="firstname" value="Shreyas"/>
         <classes>
-            <class name="com.reddit.automation.ui.pageTests.LoginTestCases">
+            <class name="com.reddit.automation.pageTests.LoginTestCases">
             	<methods>
         			<include name="sampleTest" />
       			</methods>

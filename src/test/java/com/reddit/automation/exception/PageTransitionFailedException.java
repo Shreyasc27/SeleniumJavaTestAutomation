@@ -1,4 +1,4 @@
-package com.reddit.automation.ui.exception;
+package com.reddit.automation.exception;
 
 public class PageTransitionFailedException extends Exception{
 
