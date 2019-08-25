@@ -5,13 +5,25 @@
         <listener class-name="com.reddit.automation.utils.ExtentReportListener"></listener>
     </listeners>
 
-    <test name="Sample Test">
+    <!--<test name="Sample Test">
         <parameter name="firstname" value="Shreyas"/>
         <classes>
             <class name="com.reddit.automation.pageTests.LoginTestCases">
             	<methods>
-        			<include name="sampleTest" />
+        			<include name="sampleTest"/>
       			</methods>
+            </class>
+        </classes>
+    </test>-->
+
+    <test name="Validate Login To Reddit.com">
+        <parameter name="username" value="mavdabbler"/>
+        <parameter name="password" value="^I^DB]ln|L66PYnV6"/>
+        <classes>
+            <class name="com.reddit.automation.pageTests.LoginTestCases">
+                <methods>
+                    <include name="validateLoginInReddit" />
+                </methods>
             </class>
         </classes>
     </test>

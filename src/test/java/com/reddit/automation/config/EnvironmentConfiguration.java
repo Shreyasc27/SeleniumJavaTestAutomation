@@ -1,6 +1,8 @@
 package com.reddit.automation.config;
 
+import com.reddit.automation.constants.CONSTANTS;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,7 +13,7 @@ public class EnvironmentConfiguration {
 
     final Logger logger = Logger.getLogger(this.getClass().getName());
 
-    public void readConfiguration(String configurationFilePath) {
+    public void setProjectConfiguration(String configurationFilePath) {
 
         try{
 
@@ -20,14 +22,24 @@ public class EnvironmentConfiguration {
             Properties prop = new Properties();
             prop.load(input);
 
-            System.setProperty("URL", prop.getProperty("URL"));
-            System.setProperty("BROWSER", prop.getProperty("BROWSER"));
+            CONSTANTS.URL = prop.getProperty("URL");
+            CONSTANTS.BROWSER = prop.getProperty("BROWSER");
+            CONSTANTS.TIMEOUTINSECONDS = prop.getProperty("TIMEOUTINSECONDS");
+
+            logger.info("URL - " + CONSTANTS.URL);
+            logger.info("BROWSER - " + CONSTANTS.BROWSER);
 
         }catch(IOException ex) {
 
             logger.error("Error in reading the contents of " + configurationFilePath + ".", ex);
 
         }
+
+    }
+
+    public void setLoggerConfiguration(String configurationFilePath) {
+
+        PropertyConfigurator.configure(configurationFilePath);
 
     }
 
