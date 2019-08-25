@@ -26,9 +26,6 @@ public class BaseTestCase {
 
         environmentConfiguration.setLoggerConfiguration("./src/test/resources/properties/log4j.properties");
 
-        logger.info("URL - " + System.getProperty("URL"));
-        logger.info("BROWSER - " + System.getProperty("BROWSER"));
-
         logger.info("Ending set up of configuration properties.");
 
     }
