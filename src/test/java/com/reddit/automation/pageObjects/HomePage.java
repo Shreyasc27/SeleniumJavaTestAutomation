@@ -1,17 +1,35 @@
 package com.reddit.automation.pageObjects;
 
-import com.reddit.automation.drivers.DriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage{
 
+    @FindBy(xpath="//button/span/h1[text()='Home']")
+    WebElement textHome;
+
     private WebDriver driver =null;
-    private DriverManager driverManager = null;
 
-    public HomePage(DriverManager driverManager){
+    public HomePage(WebDriver driver){
 
-        this.driverManager = driverManager;
-        this.driver = driverManager.getDriver();
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+
+    }
+
+    public boolean isHomePageOpened(){
+
+        boolean focusOnHomePage = false;
+
+        if(textHome.isDisplayed()){
+
+            focusOnHomePage = true;
+
+        }
+
+        return focusOnHomePage;
 
     }
 
