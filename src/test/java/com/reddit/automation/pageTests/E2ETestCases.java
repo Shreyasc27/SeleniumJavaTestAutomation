@@ -54,8 +54,8 @@ public class E2ETestCases extends BaseTestCase {
     }
 
     @Test(description= "As a user, I am able to upvote a post." )
-    @Parameters({"username", "password", "mySubRedditToBeViewed", "expectedVoteCount"})
-    public void createPostAndVerifyUpvote(String username, String password, String mySubRedditToBeViewed, String expectedVoteCount, ITestContext context) throws Exception{
+    @Parameters({"username", "password", "mySubRedditToBeViewed", "postToBeCreated", "expectedVoteCount"})
+    public void createPostAndVerifyUpvote(String username, String password, String mySubRedditToBeViewed, String postToBeCreated, String expectedVoteCount, ITestContext context) throws Exception{
 
         String voteCount = null;
         LoginPage loginPage = new LoginPage(DriverManager.driver);
@@ -66,7 +66,7 @@ public class E2ETestCases extends BaseTestCase {
         Assert.assertTrue(mySubRedditsPage.isMySubbRedditsPageOpened(), "Error in navigating to MySubReddits Page. SubReddits Page is not displayed.");
         mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
         CreatePostPage createPostPage = new CreatePostPage(DriverManager.driver);
-        SpecificPostPage specificPostPage = createPostPage.createPost();
+        SpecificPostPage specificPostPage = createPostPage.createPost(postToBeCreated);
         specificPostPage.clickUpVote();
         voteCount = specificPostPage.getVoteCount();
         Assert.assertEquals(voteCount, expectedVoteCount, "Error in Up Voting.");
@@ -74,8 +74,8 @@ public class E2ETestCases extends BaseTestCase {
     }
 
     @Test(description= "As a user, I am able to downvote a post." )
-    @Parameters({"username", "password", "mySubRedditToBeViewed", "expectedVoteCount"})
-    public void createPostAndVerifyDownvote(String username, String password, String mySubRedditToBeViewed, String expectedVoteCount, ITestContext context) throws Exception{
+    @Parameters({"username", "password", "mySubRedditToBeViewed", "postToBeCreated", "expectedVoteCount"})
+    public void createPostAndVerifyDownvote(String username, String password, String mySubRedditToBeViewed, String postToBeCreated, String expectedVoteCount, ITestContext context) throws Exception{
 
         String voteCount = null;
         LoginPage loginPage = new LoginPage(DriverManager.driver);
@@ -86,7 +86,7 @@ public class E2ETestCases extends BaseTestCase {
         Assert.assertTrue(mySubRedditsPage.isMySubbRedditsPageOpened(), "Error in navigating to MySubReddits Page. SubReddits Page is not displayed.");
         mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
         CreatePostPage createPostPage = new CreatePostPage(DriverManager.driver);
-        SpecificPostPage specificPostPage = createPostPage.createPost();
+        SpecificPostPage specificPostPage = createPostPage.createPost(postToBeCreated);
         specificPostPage.clickDownVote();
         voteCount = specificPostPage.getVoteCount();
         Assert.assertEquals(voteCount, expectedVoteCount, "Error in Down Voting.");

@@ -42,6 +42,7 @@
 
     <test name="As a user, I am able to upvote a post.">
         <parameter name="mySubRedditToBeViewed" value="r/MavericksDnD: For the Mavericks Dudes and Dudettes"/>
+        <parameter name="postToBeCreated" value="Test Post By Shreyas Chaudhari"/>
         <parameter name="expectedVoteCount" value="0"/>
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">
@@ -54,6 +55,7 @@
 
     <test name="As a user, I am able to downvote a post.">
         <parameter name="mySubRedditToBeViewed" value="r/MavericksDnD: For the Mavericks Dudes and Dudettes"/>
+        <parameter name="postToBeCreated" value="Test Post By Shreyas Chaudhari"/>
         <parameter name="expectedVoteCount" value="-1"/>
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">

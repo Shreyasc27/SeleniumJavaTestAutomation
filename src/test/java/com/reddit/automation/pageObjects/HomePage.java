@@ -1,5 +1,6 @@
 package com.reddit.automation.pageObjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,7 @@ public class HomePage{
 
     private WebDriver driver =null;
     MySubRedditsPage mySubRedditsPage = null;
+    Logger logger = Logger.getLogger(this.getClass().getName());
 
     public HomePage(WebDriver driver){
 
@@ -36,9 +38,15 @@ public class HomePage{
 
     public MySubRedditsPage openRedditMySubbreddits(){
 
+        logger.info("Starting the launch of SubReddits url.");
+
         driver.get(driver.getCurrentUrl() + "/subreddits/mine");
         mySubRedditsPage = new MySubRedditsPage(driver);
+
+        logger.info("Launching of the SubReddits url Done.");
+
         return mySubRedditsPage;
+
     }
 
 

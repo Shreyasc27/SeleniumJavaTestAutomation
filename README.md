@@ -1,5 +1,5 @@
 # reddit-ui-test
-* Test Automation using Java, Selenium Webdriver, TestNG, Maven
+Test Automation using Java, Selenium Webdriver, TestNG, Maven
 
 ## Getting started
  

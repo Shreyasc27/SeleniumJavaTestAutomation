@@ -46,16 +46,6 @@ public class BaseTestCase {
 
     }
 
-    /*@BeforeMethod(dependsOnMethods = {"setUpWebDriver"}, alwaysRun = true)
-    public void setUpPageFactory(){
-
-        logger.info("Starting set up of page factory.");
-
-
-        logger.info("Ending set up of page factory.");
-
-    }*/
-
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
 

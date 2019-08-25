@@ -28,11 +28,17 @@ public class LoginPage{
 
     public void openReddit(){
 
+        logger.info("Starting the launch of the url.");
+
         driver.get(CONSTANTS.URL);
+
+        logger.info("Launching of the url Done.");
 
     }
 
     public HomePage loginToReddit(String username, String password){
+
+        logger.info("Starting the login to Reddit.com");
 
         linkLogIn.click();
 
@@ -40,11 +46,11 @@ public class LoginPage{
 
         for(int count=0; count<listOfIframes.size(); count++){
 
-            logger.info("Considering frame number - " + count);
+            logger.debug("Considering frame number - " + count);
 
             if(listOfIframes.get(count).getAttribute("src") != null && listOfIframes.get(count).getAttribute("src").contains("login")){
 
-                logger.info("Frame number that has 'login' in 'src' - " + count);
+                logger.debug("Frame number that has 'login' in 'src' - " + count);
                 driver.switchTo().frame(count);
                 driver.findElement(By.id("loginUsername")).sendKeys(username);
                 driver.findElement(By.id("loginPassword")).sendKeys(password);
@@ -56,6 +62,8 @@ public class LoginPage{
             }
 
         }
+
+        logger.info("Login to Reddit.com is Done.");
 
         return homePage;
 

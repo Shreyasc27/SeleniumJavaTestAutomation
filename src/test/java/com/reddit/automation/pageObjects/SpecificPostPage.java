@@ -1,5 +1,6 @@
 package com.reddit.automation.pageObjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class SpecificPostPage {
 
     private WebDriver driver =null;
     SpecificPostPage specificPostPage = null;
+    Logger logger = Logger.getLogger(this.getClass().getName());
 
     public SpecificPostPage(WebDriver driver){
 
@@ -28,17 +30,23 @@ public class SpecificPostPage {
 
     public String getVoteCount(){
 
+        logger.info("Reading the Vote count.");
+
         return voteCount.getText();
 
     }
 
     public void clickUpVote(){
 
+        logger.info("Up voting the post.");
+
         upVote.click();
 
     }
 
     public void clickDownVote() throws Exception{
+
+        logger.info("Down voting the post.");
 
         downVote.click();
 

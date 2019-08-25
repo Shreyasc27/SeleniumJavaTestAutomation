@@ -31,18 +31,18 @@ public class CreatePostPage {
 
     }
 
-    public SpecificPostPage createPost(){
+    public SpecificPostPage createPost(String postToBeCreated){
 
         logger.info("Creation of post started.");
 
         specificPostPage = new SpecificPostPage(DriverManager.driver);
 
         createPost.click();
-        postTitle.sendKeys("Test Post By Shreyas Chaudhari");
+        postTitle.sendKeys(postToBeCreated);
 
         for(int count=0; count<listOfButton.size(); count++){
 
-            logger.info(count + ") " + listOfButton.get(count).getText());
+            logger.debug(count + ") " + listOfButton.get(count).getText());
 
             if(listOfButton.get(count).getText().trim().equals("POST")){
 
@@ -58,12 +58,5 @@ public class CreatePostPage {
         return specificPostPage;
 
     }
-
-    /*public void setComment(){
-
-        WebElement textComment = driver.findElement(By.xpath("//div[@class='DraftEditor-editorContainer']"));
-        textComment.sendKeys("Comment by Shreyas Chaudhari");
-
-    }*/
 
 }

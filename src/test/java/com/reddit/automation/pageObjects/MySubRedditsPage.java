@@ -101,7 +101,7 @@ public class MySubRedditsPage {
 
         for(int i=0; i<listOfExpectedMySubReddits.size(); i++){
 
-            logger.info(i + ") " + listOfExpectedMySubReddits.get(i));
+            logger.debug(i + ") " + listOfExpectedMySubReddits.get(i));
 
         }
 
@@ -117,12 +117,12 @@ public class MySubRedditsPage {
 
         ArrayList<String> listOfActualMySubReddits = new ArrayList<>();
 
-        logger.info(listOfMySubRedditsTab.size() + " list of actual MySubReddits - ");
+        logger.debug(listOfMySubRedditsTab.size() + " list of actual MySubReddits - ");
 
         for(int count=0; count<listOfMySubRedditsTab.size(); count++){
 
             listOfActualMySubReddits.add(listOfMySubRedditsTab.get(count).getText());
-            logger.info(count + ") " + listOfMySubRedditsTab.get(count).getText());
+            logger.debug(count + ") " + listOfMySubRedditsTab.get(count).getText());
 
         }
 
@@ -147,8 +147,8 @@ public class MySubRedditsPage {
 
         boolean navigationToSpecificSubRedditSuccess = false;
 
-        logger.info("Current Url - " + driver.getCurrentUrl());
-        logger.info("My SubReddit - " + mySubRedditToBeViewed);
+        logger.debug("Current Url - " + driver.getCurrentUrl());
+        logger.debug("My SubReddit - " + mySubRedditToBeViewed);
 
         if(driver.getCurrentUrl().contains(mySubRedditToBeViewed)){
 
