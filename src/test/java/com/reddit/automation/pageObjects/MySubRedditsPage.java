@@ -147,6 +147,9 @@ public class MySubRedditsPage {
 
         boolean navigationToSpecificSubRedditSuccess = false;
 
+        logger.info("Current Url - " + driver.getCurrentUrl());
+        logger.info("My SubReddit - " + mySubRedditToBeViewed);
+
         if(driver.getCurrentUrl().contains(mySubRedditToBeViewed)){
 
             navigationToSpecificSubRedditSuccess = true;

@@ -29,12 +29,36 @@
         </classes>
     </test>
 
-    <test name="Vaiew one of my subscriber SubRedits">
+    <test name="View one of my subscriber SubRedits">
         <parameter name="mySubRedditToBeViewed" value="r/programming"/>
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">
                 <methods>
                     <include name="viewOneOfMySubReddits" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Create Post And Verify Up Vote">
+        <parameter name="mySubRedditToBeViewed" value="r/MavericksDnD: For the Mavericks Dudes and Dudettes"/>
+        <parameter name="expectedVoteCount" value="0"/>
+        <classes>
+            <class name="com.reddit.automation.pageTests.E2ETestCases">
+                <methods>
+                    <include name="createPostAndVerifyUpvote" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Create Post And Verify Down Vote">
+        <parameter name="mySubRedditToBeViewed" value="r/MavericksDnD: For the Mavericks Dudes and Dudettes"/>
+        <parameter name="expectedVoteCount" value="-1"/>
+        <classes>
+            <class name="com.reddit.automation.pageTests.E2ETestCases">
+                <methods>
+                    <include name="createPostAndVerifyDownvote" />
                 </methods>
             </class>
         </classes>

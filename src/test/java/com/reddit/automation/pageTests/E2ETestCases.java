@@ -1,9 +1,7 @@
 package com.reddit.automation.pageTests;
 
 import com.reddit.automation.drivers.DriverManager;
-import com.reddit.automation.pageObjects.HomePage;
-import com.reddit.automation.pageObjects.LoginPage;
-import com.reddit.automation.pageObjects.MySubRedditsPage;
+import com.reddit.automation.pageObjects.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -61,6 +59,46 @@ public class E2ETestCases extends BaseTestCase {
         mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
         Assert.assertTrue(mySubRedditsPage.navigateValidationToSpecificMySubReddit(mySubRedditToBeViewed), "Error in navigating to the specific SubReddits Page.");
 
+
+    }
+
+    @Test
+    @Parameters({"username", "password", "mySubRedditToBeViewed", "expectedVoteCount"})
+    public void createPostAndVerifyUpvote(String username, String password, String mySubRedditToBeViewed, String expectedVoteCount, ITestContext context) throws Exception{
+
+        LoginPage loginPage = new LoginPage(DriverManager.driver);
+        loginPage.openReddit();
+        HomePage homePage = loginPage.loginToReddit(username, password);
+        Assert.assertTrue(homePage.isHomePageOpened(), "Error in login to Reddit.com. HomePage is not displayed.");
+        MySubRedditsPage mySubRedditsPage = homePage.openRedditMySubbreddits();
+        Assert.assertTrue(mySubRedditsPage.isMySubbRedditsPageOpened(), "Error in navigating to MySubReddits Page. SubReddits Page is not displayed.");
+        mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
+        CreatePostPage createPostPage = new CreatePostPage(DriverManager.driver);
+        SpecificPostPage specificPostPage = createPostPage.createPost();
+        String voteCount = null;
+        specificPostPage.clickUpVote();
+        voteCount = specificPostPage.getVoteCount();
+        Assert.assertEquals(voteCount, expectedVoteCount, "Error in Up Voting.");
+
+    }
+
+    @Test
+    @Parameters({"username", "password", "mySubRedditToBeViewed", "expectedVoteCount"})
+    public void createPostAndVerifyDownvote(String username, String password, String mySubRedditToBeViewed, String expectedVoteCount, ITestContext context) throws Exception{
+
+        LoginPage loginPage = new LoginPage(DriverManager.driver);
+        loginPage.openReddit();
+        HomePage homePage = loginPage.loginToReddit(username, password);
+        Assert.assertTrue(homePage.isHomePageOpened(), "Error in login to Reddit.com. HomePage is not displayed.");
+        MySubRedditsPage mySubRedditsPage = homePage.openRedditMySubbreddits();
+        Assert.assertTrue(mySubRedditsPage.isMySubbRedditsPageOpened(), "Error in navigating to MySubReddits Page. SubReddits Page is not displayed.");
+        mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
+        CreatePostPage createPostPage = new CreatePostPage(DriverManager.driver);
+        SpecificPostPage specificPostPage = createPostPage.createPost();
+        String voteCount = null;
+        specificPostPage.clickDownVote();
+        voteCount = specificPostPage.getVoteCount();
+        Assert.assertEquals(voteCount, expectedVoteCount, "Error in Down Voting.");
 
     }
 
