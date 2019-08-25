@@ -10,7 +10,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class E2ETestCases extends BaseTestCase{
+public class E2ETestCases extends BaseTestCase {
 
     final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -25,7 +25,7 @@ public class E2ETestCases extends BaseTestCase{
 
     @Test
     @Parameters({"username", "password"})
-    public void validateLoginInReddit(String username, String password, ITestContext context) throws Exception {
+    public void validateLoginInReddit(String username, String password, ITestContext context){
 
         LoginPage loginPage = new LoginPage(DriverManager.driver);
         loginPage.openReddit();
@@ -36,7 +36,7 @@ public class E2ETestCases extends BaseTestCase{
 
     @Test
     @Parameters({"username", "password", "listOfSubReddits"})
-    public void validateListOfMySubReddits(String username, String password, String listOfSubReddits, ITestContext context) throws Exception {
+    public void validateListOfMySubReddits(String username, String password, String listOfSubReddits, ITestContext context) {
 
         LoginPage loginPage = new LoginPage(DriverManager.driver);
         loginPage.openReddit();
@@ -45,6 +45,22 @@ public class E2ETestCases extends BaseTestCase{
         MySubRedditsPage mySubRedditsPage = homePage.openRedditMySubbreddits();
         Assert.assertTrue(mySubRedditsPage.isMySubbRedditsPageOpened(), "Error in navigating to MySubReddits Page. SubReddits Page is not displayed.");
         Assert.assertTrue(mySubRedditsPage.validateTheListOfSubReddits(listOfSubReddits), "List of MySubReddits do not match.");
+
+    }
+
+    @Test
+    @Parameters({"username", "password", "mySubRedditToBeViewed"})
+    public void viewOneOfMySubReddits(String username, String password, String mySubRedditToBeViewed, ITestContext context) {
+
+        LoginPage loginPage = new LoginPage(DriverManager.driver);
+        loginPage.openReddit();
+        HomePage homePage = loginPage.loginToReddit(username, password);
+        Assert.assertTrue(homePage.isHomePageOpened(), "Error in login to Reddit.com. HomePage is not displayed.");
+        MySubRedditsPage mySubRedditsPage = homePage.openRedditMySubbreddits();
+        Assert.assertTrue(mySubRedditsPage.isMySubbRedditsPageOpened(), "Error in navigating to MySubReddits Page. SubReddits Page is not displayed.");
+        mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
+        Assert.assertTrue(mySubRedditsPage.navigateValidationToSpecificMySubReddit(mySubRedditToBeViewed), "Error in navigating to the specific SubReddits Page.");
+
 
     }
 

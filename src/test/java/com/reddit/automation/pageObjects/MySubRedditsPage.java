@@ -1,6 +1,7 @@
 package com.reddit.automation.pageObjects;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,9 @@ public class MySubRedditsPage {
 
     @FindBy(xpath="//p[@class='titlerow']/a[@class='title']")
     List<WebElement> listOfMySubRedditsTab;
+
+    @FindBy(xpath="//p[@class='titlerow']")
+    WebElement specificMySubRedditsTab;
 
     Logger logger = Logger.getLogger(this.getClass().getName());
     private WebDriver driver =null;
@@ -43,6 +47,8 @@ public class MySubRedditsPage {
     }
 
     public boolean validateTheListOfSubReddits(String listOfMySubReddits){
+
+        logger.info("Validating the list of Sub Reddits.");
 
         boolean listOfMySubRedditsMatches = false;
 
@@ -77,6 +83,8 @@ public class MySubRedditsPage {
             }
 
         }
+
+        logger.info("Validating the list of Sub Reddits Done.");
 
         return listOfMySubRedditsMatches;
 
@@ -119,6 +127,35 @@ public class MySubRedditsPage {
         }
 
         return listOfActualMySubReddits;
+
+    }
+
+    public void clickSpecificMySubReddit(String mySubRedditToBeViewed){
+
+        logger.info("Clicking on the specific SubReddit.");
+
+        WebElement specificMySubRedditToBeClicked = specificMySubRedditsTab.findElement(By.xpath("//a[contains(text(),'" + mySubRedditToBeViewed + "')]"));
+        specificMySubRedditToBeClicked.click();
+
+        logger.info("Clicking on the specific SubReddit Done.");
+
+    }
+
+    public boolean navigateValidationToSpecificMySubReddit(String mySubRedditToBeViewed){
+
+        logger.info("Validating if the SubReddit url has been invoked.");
+
+        boolean navigationToSpecificSubRedditSuccess = false;
+
+        if(driver.getCurrentUrl().contains(mySubRedditToBeViewed)){
+
+            navigationToSpecificSubRedditSuccess = true;
+
+        }
+
+        logger.info("Validating if the SubReddit url has been invoked Done.");
+
+        return navigationToSpecificSubRedditSuccess;
 
     }
 

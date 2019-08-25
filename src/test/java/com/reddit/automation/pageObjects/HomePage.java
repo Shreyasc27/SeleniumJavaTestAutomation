@@ -34,15 +34,10 @@ public class HomePage{
 
     }
 
-    public MySubRedditsPage openRedditMySubbreddits() throws Exception{
-
-        Thread.sleep(5000);
+    public MySubRedditsPage openRedditMySubbreddits(){
 
         driver.get(driver.getCurrentUrl() + "/subreddits/mine");
         mySubRedditsPage = new MySubRedditsPage(driver);
-
-        Thread.sleep(5000);
-
         return mySubRedditsPage;
     }
 

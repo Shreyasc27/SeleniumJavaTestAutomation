@@ -8,17 +8,6 @@
     <parameter name="username" value="mavdabbler"/>
     <parameter name="password" value="^I^DB]ln|L66PYnV6"/>
 
-    <!--<test name="Sample Test">
-        <parameter name="firstname" value="Shreyas"/>
-        <classes>
-            <class name="com.reddit.automation.pageTests.E2ETestCases">
-            	<methods>
-        			<include name="sampleTest"/>
-      			</methods>
-            </class>
-        </classes>
-    </test>-->
-
     <test name="Validate login to Reddit.com">
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">
@@ -35,6 +24,17 @@
             <class name="com.reddit.automation.pageTests.E2ETestCases">
                 <methods>
                     <include name="validateListOfMySubReddits" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Vaiew one of my subscriber SubRedits">
+        <parameter name="mySubRedditToBeViewed" value="r/programming"/>
+        <classes>
+            <class name="com.reddit.automation.pageTests.E2ETestCases">
+                <methods>
+                    <include name="viewOneOfMySubReddits" />
                 </methods>
             </class>
         </classes>

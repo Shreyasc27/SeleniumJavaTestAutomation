@@ -26,7 +26,7 @@ public class LoginPage{
 
     }
 
-    public void openReddit() throws Exception{
+    public void openReddit(){
 
         driver.get(CONSTANTS.URL);
 
