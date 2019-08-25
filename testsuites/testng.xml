@@ -8,7 +8,7 @@
     <parameter name="username" value="mavdabbler"/>
     <parameter name="password" value="^I^DB]ln|L66PYnV6"/>
 
-    <test name="Validate login to Reddit.com">
+    <test name="As a user, I can login.">
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">
                 <methods>
@@ -18,7 +18,7 @@
         </classes>
     </test>
 
-    <test name="Validate list of my subscriber SubRedits">
+    <test name="As a user, I am able to see my subscribed subreddits.">
         <parameter name="listOfSubReddits" value="r/politics: Politics|r/programming: programming|r/pics: Reddit Pics|r/technology: /r/Technology|r/soccer: The back page of the internet|r/nottheonion: Sadly, this is not the Onion.|r/MachineLearning: Machine Learning|r/learnprogramming: learn programming|r/streetwear: Streetwear|r/polandball: Polandball|r/mildlyinteresting: For photos that are, you know, mildly interesting|r/reallifedoodles: Real Life Doodles|r/BeAmazed: I bet you will Be Amazed !|r/wholesomememes: Internet for the Spirit|r/MavericksDnD: For the Mavericks Dudes and Dudettes|r/Stadia: Stadia"/>
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">
@@ -29,7 +29,7 @@
         </classes>
     </test>
 
-    <test name="View one of my subscriber SubRedits">
+    <test name="As a user, I am able to view one of my subscribed subreddits.">
         <parameter name="mySubRedditToBeViewed" value="r/programming"/>
         <classes>
             <class name="com.reddit.automation.pageTests.E2ETestCases">
@@ -40,7 +40,7 @@
         </classes>
     </test>
 
-    <test name="Create Post And Verify Up Vote">
+    <test name="As a user, I am able to upvote a post.">
         <parameter name="mySubRedditToBeViewed" value="r/MavericksDnD: For the Mavericks Dudes and Dudettes"/>
         <parameter name="expectedVoteCount" value="0"/>
         <classes>
@@ -52,7 +52,7 @@
         </classes>
     </test>
 
-    <test name="Create Post And Verify Down Vote">
+    <test name="As a user, I am able to downvote a post.">
         <parameter name="mySubRedditToBeViewed" value="r/MavericksDnD: For the Mavericks Dudes and Dudettes"/>
         <parameter name="expectedVoteCount" value="-1"/>
         <classes>

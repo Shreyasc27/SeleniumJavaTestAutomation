@@ -12,16 +12,7 @@ public class E2ETestCases extends BaseTestCase {
 
     final Logger logger = Logger.getLogger(this.getClass().getName());
 
-    /*@Test
-    @Parameters({"firstname"})
-    public void sampleTest(String firstname, ITestContext context) throws IOException {
-
-        System.out.println("Hurray - " + firstname + " !!!");
-        logger.info("Hurray - " + firstname + " !!!");
-
-    }*/
-
-    @Test
+    @Test(description= "As a user, I can login." )
     @Parameters({"username", "password"})
     public void validateLoginInReddit(String username, String password, ITestContext context){
 
@@ -32,7 +23,7 @@ public class E2ETestCases extends BaseTestCase {
 
     }
 
-    @Test
+    @Test(description= "As a user, I am able to see my subscribed subreddits." )
     @Parameters({"username", "password", "listOfSubReddits"})
     public void validateListOfMySubReddits(String username, String password, String listOfSubReddits, ITestContext context) {
 
@@ -46,7 +37,7 @@ public class E2ETestCases extends BaseTestCase {
 
     }
 
-    @Test
+    @Test(description= "As a user, I am able to view one of my subscribed subreddits." )
     @Parameters({"username", "password", "mySubRedditToBeViewed"})
     public void viewOneOfMySubReddits(String username, String password, String mySubRedditToBeViewed, ITestContext context) {
 
@@ -62,10 +53,11 @@ public class E2ETestCases extends BaseTestCase {
 
     }
 
-    @Test
+    @Test(description= "As a user, I am able to upvote a post." )
     @Parameters({"username", "password", "mySubRedditToBeViewed", "expectedVoteCount"})
     public void createPostAndVerifyUpvote(String username, String password, String mySubRedditToBeViewed, String expectedVoteCount, ITestContext context) throws Exception{
 
+        String voteCount = null;
         LoginPage loginPage = new LoginPage(DriverManager.driver);
         loginPage.openReddit();
         HomePage homePage = loginPage.loginToReddit(username, password);
@@ -75,17 +67,17 @@ public class E2ETestCases extends BaseTestCase {
         mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
         CreatePostPage createPostPage = new CreatePostPage(DriverManager.driver);
         SpecificPostPage specificPostPage = createPostPage.createPost();
-        String voteCount = null;
         specificPostPage.clickUpVote();
         voteCount = specificPostPage.getVoteCount();
         Assert.assertEquals(voteCount, expectedVoteCount, "Error in Up Voting.");
 
     }
 
-    @Test
+    @Test(description= "As a user, I am able to downvote a post." )
     @Parameters({"username", "password", "mySubRedditToBeViewed", "expectedVoteCount"})
     public void createPostAndVerifyDownvote(String username, String password, String mySubRedditToBeViewed, String expectedVoteCount, ITestContext context) throws Exception{
 
+        String voteCount = null;
         LoginPage loginPage = new LoginPage(DriverManager.driver);
         loginPage.openReddit();
         HomePage homePage = loginPage.loginToReddit(username, password);
@@ -95,7 +87,6 @@ public class E2ETestCases extends BaseTestCase {
         mySubRedditsPage.clickSpecificMySubReddit(mySubRedditToBeViewed);
         CreatePostPage createPostPage = new CreatePostPage(DriverManager.driver);
         SpecificPostPage specificPostPage = createPostPage.createPost();
-        String voteCount = null;
         specificPostPage.clickDownVote();
         voteCount = specificPostPage.getVoteCount();
         Assert.assertEquals(voteCount, expectedVoteCount, "Error in Down Voting.");
