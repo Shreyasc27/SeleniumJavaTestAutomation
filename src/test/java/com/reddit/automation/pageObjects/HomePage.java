@@ -11,6 +11,7 @@ public class HomePage{
     WebElement textHome;
 
     private WebDriver driver =null;
+    MySubRedditsPage mySubRedditsPage = null;
 
     public HomePage(WebDriver driver){
 
@@ -32,5 +33,18 @@ public class HomePage{
         return focusOnHomePage;
 
     }
+
+    public MySubRedditsPage openRedditMySubbreddits() throws Exception{
+
+        Thread.sleep(5000);
+
+        driver.get(driver.getCurrentUrl() + "/subreddits/mine");
+        mySubRedditsPage = new MySubRedditsPage(driver);
+
+        Thread.sleep(5000);
+
+        return mySubRedditsPage;
+    }
+
 
 }

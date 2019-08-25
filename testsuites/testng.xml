@@ -5,10 +5,13 @@
         <listener class-name="com.reddit.automation.utils.ExtentReportListener"></listener>
     </listeners>
 
+    <parameter name="username" value="mavdabbler"/>
+    <parameter name="password" value="^I^DB]ln|L66PYnV6"/>
+
     <!--<test name="Sample Test">
         <parameter name="firstname" value="Shreyas"/>
         <classes>
-            <class name="com.reddit.automation.pageTests.LoginTestCases">
+            <class name="com.reddit.automation.pageTests.E2ETestCases">
             	<methods>
         			<include name="sampleTest"/>
       			</methods>
@@ -16,13 +19,22 @@
         </classes>
     </test>-->
 
-    <test name="Validate Login To Reddit.com">
-        <parameter name="username" value="mavdabbler"/>
-        <parameter name="password" value="^I^DB]ln|L66PYnV6"/>
+    <test name="Validate login to Reddit.com">
         <classes>
-            <class name="com.reddit.automation.pageTests.LoginTestCases">
+            <class name="com.reddit.automation.pageTests.E2ETestCases">
                 <methods>
                     <include name="validateLoginInReddit" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Validate list of my subscriber SubRedits">
+        <parameter name="listOfSubReddits" value="r/politics: Politics|r/programming: programming|r/pics: Reddit Pics|r/technology: /r/Technology|r/soccer: The back page of the internet|r/nottheonion: Sadly, this is not the Onion.|r/MachineLearning: Machine Learning|r/learnprogramming: learn programming|r/streetwear: Streetwear|r/polandball: Polandball|r/mildlyinteresting: For photos that are, you know, mildly interesting|r/reallifedoodles: Real Life Doodles|r/BeAmazed: I bet you will Be Amazed !|r/wholesomememes: Internet for the Spirit|r/MavericksDnD: For the Mavericks Dudes and Dudettes|r/Stadia: Stadia"/>
+        <classes>
+            <class name="com.reddit.automation.pageTests.E2ETestCases">
+                <methods>
+                    <include name="validateListOfMySubReddits" />
                 </methods>
             </class>
         </classes>

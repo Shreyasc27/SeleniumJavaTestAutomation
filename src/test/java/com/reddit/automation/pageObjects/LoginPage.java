@@ -17,7 +17,7 @@ public class LoginPage{
 
     WebDriver driver = null;
     HomePage homePage = null;
-    final Logger logger = Logger.getLogger(this.getClass().getName());
+    Logger logger = Logger.getLogger(this.getClass().getName());
 
     public LoginPage(WebDriver driver){
 
@@ -32,7 +32,7 @@ public class LoginPage{
 
     }
 
-    public HomePage loginToReddit(String username, String password) throws Exception{
+    public HomePage loginToReddit(String username, String password){
 
         linkLogIn.click();
 
@@ -49,6 +49,7 @@ public class LoginPage{
                 driver.findElement(By.id("loginUsername")).sendKeys(username);
                 driver.findElement(By.id("loginPassword")).sendKeys(password);
                 driver.findElement(By.tagName("button")).click();
+                driver.switchTo().defaultContent();
                 homePage = new HomePage(driver);
                 break;
 
