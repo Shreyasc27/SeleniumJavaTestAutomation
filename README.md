@@ -15,7 +15,7 @@ Test Automation using Java, Selenium Webdriver, TestNG, Maven
     * ```echo %MAVEN_HOME%```
     * ```mvn -version```
 
-* Clone the Git repository - ```https://github.com/Shreyasc27/reddit-ui-test.git```
+* Clone the Git repository - ```https://github.com/Shreyasc27/SeleniumJavaTestAutomation.git```
 
 * Execute command - ```cd reddit-ui-test```
 
@@ -25,4 +25,4 @@ Test Automation using Java, Selenium Webdriver, TestNG, Maven
 
 * Open following 2 Html Reports -
     * emailable-report.html
-    * Reddit-Ui-Test.html.html
+    * *.html
